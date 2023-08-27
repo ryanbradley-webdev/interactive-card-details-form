@@ -1,3 +1,10 @@
 .button {
+    height: 53px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #21092F;
     border: none;
+    border-radius: 8px;
 }

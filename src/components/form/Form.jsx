@@ -1,3 +1,4 @@
+import Button from '../button/Button';
 import styles from './form.module.css'
 
 export default function Form() {
@@ -95,9 +96,9 @@ export default function Form() {
 
             </div>
 
-            <button>
+            <Button>
                 Confirm
-            </button>
+            </Button>
 
         </form>
     )
