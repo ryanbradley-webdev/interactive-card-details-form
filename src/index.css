@@ -7,20 +7,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Space Grotesk', Arial, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
+}
+
+html {
+  position: relative;
 }
 
 .visually-hidden {
   display: none;
-}
-
-#root {
-  display: grid;
-}
-
-@media only screen and (min-width: 481px) {
-  #root {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }

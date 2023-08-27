@@ -47,7 +47,9 @@ export default function Form() {
                 className={styles.details}
             >
 
-                <div>
+                <div
+                    className={styles.expiration}
+                >
 
                     <label>
 
