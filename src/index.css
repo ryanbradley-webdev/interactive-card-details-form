@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Space+Grotesk:300,regular,500,600,700);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+#root {
+  display: grid;
+}
+
+@media only screen and (min-width: 481px) {
+  #root {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
