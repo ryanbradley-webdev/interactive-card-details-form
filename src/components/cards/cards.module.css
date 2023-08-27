@@ -7,3 +7,47 @@
 .card_container img {
     width: 100%;
 }
+
+.cards {
+    position: absolute;
+    display: grid;
+    top: 32px;
+    left: 16px;
+    right: 16px;
+}
+
+.cards > div {
+    position: relative;
+    max-width: 286px;
+}
+
+.cards > div:first-child {
+    justify-self: end;
+}
+
+.cards > div:last-of-type {
+    margin-top: -73px;
+}
+
+.cards > div:last-of-type::before,
+.cards > div:last-of-type::after {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+}
+
+.cards > div:last-of-type::before {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    top: 18px;
+    left: 19px;
+}
+
+.cards > div:last-of-type::after {
+    height: 14px;
+    width: 14px;
+    border:1px solid white;
+    top: 26px;
+    left: 60px;
+}
