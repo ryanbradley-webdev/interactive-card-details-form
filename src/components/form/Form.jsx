@@ -14,24 +14,10 @@ export default function Form({
     setCvc
 }) {
     const updateNumber = e => {
-        const number = e.target.value.replaceAll(' ', '')
+        const number = e.target.value
 
         if (number.length <= 16) {
-            let newNumber = number.substring(0, 4)
-
-            if (number.length > 4) {
-                newNumber += ' ' + number.substring(4, 8)
-            }
-
-            if (number.length > 8) {
-                newNumber += ' ' + number.substring(8, 12)
-            }
-
-            if (number.length > 12) {
-                newNumber += ' ' + number.substring(12, 16)
-            }
-
-            setNumber(newNumber)
+            setNumber(number)
         }
     }
     
