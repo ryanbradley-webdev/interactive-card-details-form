@@ -6,7 +6,7 @@ export default function Button({
 }) {
     return (
         <button
-            onclick={onClick}
+            onClick={onClick}
             className={styles.button}
         >
 

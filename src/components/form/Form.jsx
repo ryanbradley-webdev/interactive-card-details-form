@@ -1,7 +1,64 @@
 import Button from '../button/Button';
 import styles from './form.module.css'
 
-export default function Form() {
+export default function Form({
+    name,
+    setName,
+    number,
+    setNumber,
+    month,
+    setMonth,
+    year,
+    setYear,
+    cvc,
+    setCvc
+}) {
+    const updateNumber = e => {
+        const number = e.target.value.replaceAll(' ', '')
+
+        if (number.length <= 16) {
+            let newNumber = number.substring(0, 4)
+
+            if (number.length > 4) {
+                newNumber += ' ' + number.substring(4, 8)
+            }
+
+            if (number.length > 8) {
+                newNumber += ' ' + number.substring(8, 12)
+            }
+
+            if (number.length > 12) {
+                newNumber += ' ' + number.substring(12, 16)
+            }
+
+            setNumber(newNumber)
+        }
+    }
+    
+    const updateMonth = e => {
+        const month = e.target.value
+
+        if (month.length <= 2) {
+            setMonth(e.target.value)
+        }
+    }
+
+    const updateYear = e => {
+        const year = e.target.value
+
+        if (year.length <= 2) {
+            setYear(e.target.value)
+        }
+    }
+
+    const updateCvc = e => {
+        const cvc = e.target.value
+
+        if (cvc.length <= 3) {
+            setCvc(e.target.value)
+        }
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
     }
@@ -23,6 +80,8 @@ export default function Form() {
                     name="name"
                     id="name"
                     placeholder='e.g. Jane Appleseed'
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                     required
                 />
 
@@ -39,6 +98,8 @@ export default function Form() {
                     name="number"
                     id="number"
                     placeholder='e.g. 1234 5678 9123 0000'
+                    value={number}
+                    onChange={updateNumber}
                     required
                 />
 
@@ -65,6 +126,8 @@ export default function Form() {
                         name="expiration"
                         id="month"
                         placeholder='MM'
+                        value={month}
+                        onChange={updateMonth}
                         required
                     />
 
@@ -73,6 +136,8 @@ export default function Form() {
                         name="expiration"
                         id="year"
                         placeholder='YY'
+                        value={year}
+                        onChange={updateYear}
                         required
                     />
 
@@ -89,6 +154,8 @@ export default function Form() {
                         name="cvc"
                         id="cvc"
                         placeholder='e.g. 123'
+                        value={cvc}
+                        onChange={updateCvc}
                         required
                     />
 

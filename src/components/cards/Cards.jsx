@@ -5,7 +5,13 @@ import CardBack from '../../assets/bg-card-back.png'
 import { useMediaQuery } from "usehooks-ts"
 import styles from './cards.module.css'
 
-export default function Cards() {
+export default function Cards({
+    name,
+    number,
+    month,
+    year,
+    cvc
+}) {
     const largeScreen = useMediaQuery('(min-width: 480px)')
 
     return (
@@ -22,11 +28,21 @@ export default function Cards() {
 
                     <img src={CardBack} alt='' />
 
+                    {cvc}
+
                 </div>
 
                 <div>
 
                     <img src={CardFront} alt='' />
+
+                    {name}
+
+                    {number}
+
+                    {month}
+
+                    {year}
 
                 </div>
 
