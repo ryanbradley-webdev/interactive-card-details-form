@@ -1,4 +1,5 @@
 import Button from '../button/Button';
+import Input from '../input/Input';
 import styles from './form.module.css'
 
 export default function Form({
@@ -61,14 +62,12 @@ export default function Form({
                     CARDHOLDER NAME
                 </span>
 
-                <input
-                    type="text"
-                    name="name"
-                    id="name"
+                <Input
+                    state={name}
+                    updateState={e => setName(e.target.value)}
+                    type='text'
+                    name='name'
                     placeholder='e.g. Jane Appleseed'
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    required
                 />
 
             </label>
@@ -79,14 +78,12 @@ export default function Form({
                     CARD NUMBER
                 </span>
 
-                <input
-                    type="text"
-                    name="number"
-                    id="number"
+                <Input
+                    state={number}
+                    updateState={updateNumber}
+                    type='text'
+                    name='number'
                     placeholder='e.g. 1234 5678 9123 0000'
-                    value={number}
-                    onChange={updateNumber}
-                    required
                 />
 
             </label>
@@ -115,6 +112,7 @@ export default function Form({
                         value={month}
                         onChange={updateMonth}
                         required
+                        aria-invalid={false}
                     />
 
                     <input
@@ -125,7 +123,12 @@ export default function Form({
                         value={year}
                         onChange={updateYear}
                         required
+                        aria-invalid={false}
                     />
+
+                    <p>
+                        Can&apos;t be blank
+                    </p>
 
                 </div>
 
@@ -143,7 +146,12 @@ export default function Form({
                         value={cvc}
                         onChange={updateCvc}
                         required
+                        aria-invalid={false}
                     />
+
+                    <p>
+                        Can&apos;t be blank
+                    </p>
 
                 </label>
 

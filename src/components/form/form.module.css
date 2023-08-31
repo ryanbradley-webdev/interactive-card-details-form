@@ -40,28 +40,42 @@
     opacity: 0.25;
 }
 
-.form input:is(:hover, :focus) {
+.form input:is(:hover, :focus),
+.form input[aria-invalid='true'] {
     outline: none;
     border-color: transparent;
 }
 
 .form label:focus-within::after,
-.expiration:focus-within::after {
+.expiration:focus-within::after,
+.form label:has(input[aria-invalid='true'])::after,
+.expiration:has(input[aria-invalid='true'])::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    top: 24px;
     height: 47px;
     border-radius: 9px;
-    background: linear-gradient(to bottom, #6348FE, #610595);
     z-index: -1;
 }
 
-.form label:focus-within::after {
+.form label:focus-within::after,
+.expiration:focus-within::after {
+    background: linear-gradient(to bottom, #6348FE, #610595);
+}
+
+.form label:has(input[aria-invalid='true'])::after,
+.expiration:has(input[aria-invalid='true'])::after {
+    background: #FF5050;
+}
+
+.form label:focus-within::after,
+.form label:has(input[aria-invalid='true'])::after {
     width: calc(100% + 2px);
 }
 
 .form label:focus-within::after,
-.expiration:has(input:first-of-type:is(:hover, :focus))::after {
+.form label:has(input[aria-invalid='true'])::after,
+.expiration:has(input:first-of-type:is(:hover, :focus), input:first-of-type[aria-invalid='true'])::after {
     left: -1px;
 }
 
@@ -69,7 +83,8 @@
     right: -1px;
 }
 
-.expiration:focus-within::after {
+.expiration:focus-within::after,
+.expiration:has(input[aria-invalid='true'])::after {
     width: calc(calc(100% / 2) - 2px);
 }
 
@@ -94,4 +109,19 @@
 .expiration label {
     grid-column: 1 / span 2;
     margin-bottom: 9px;
+}
+
+.form p {
+    color: #FF5050;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.details p {
+    margin-top: 8px;
+}
+
+.expiration p {
+    grid-column: 1 / span 2;
 }
