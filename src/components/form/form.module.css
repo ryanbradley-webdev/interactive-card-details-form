@@ -11,18 +11,25 @@
     padding-block: 90px 40px;
 }
 
+.form label,
+.expiration {
+    position: relative;
+}
+
 .form label {
     row-gap: 9px;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 2px;
     color: #21092F;
+    isolation: isolate;
 }
 
 .form input {
     height: 45px;
     width: 100%;
     padding-inline: 16px;
+    background-color: white;
     border: 1px solid #DFDEE0;
     border-radius: 8px;
     font-size: 18px;
@@ -31,6 +38,39 @@
 .form input::placeholder {
     color: #21092F;
     opacity: 0.25;
+}
+
+.form input:is(:hover, :focus) {
+    outline: none;
+    border-color: transparent;
+}
+
+.form label:focus-within::after,
+.expiration:focus-within::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    height: 47px;
+    border-radius: 9px;
+    background: linear-gradient(to bottom, #6348FE, #610595);
+    z-index: -1;
+}
+
+.form label:focus-within::after {
+    width: calc(100% + 2px);
+}
+
+.form label:focus-within::after,
+.expiration:has(input:first-of-type:is(:hover, :focus))::after {
+    left: -1px;
+}
+
+.expiration:has(input:last-of-type:is(:hover, :focus))::after {
+    right: -1px;
+}
+
+.expiration:focus-within::after {
+    width: calc(calc(100% / 2) - 2px);
 }
 
 .details {
@@ -45,6 +85,7 @@
 }
 
 .expiration {
+    height: fit-content;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 8px;
@@ -52,4 +93,5 @@
 
 .expiration label {
     grid-column: 1 / span 2;
+    margin-bottom: 9px;
 }
