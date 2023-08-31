@@ -12,15 +12,43 @@ export default function Input({
 }) {
     const [invalid, setInvalid] = useState(false)
     const [doubleInvalid, setDoubleInvalid] = useState(false)
+    const [errMsg, setErrMsg] = useState('')
 
     const handleChange = (e) => {
-        setInvalid(e.target.value === '')
+        if (!e.target.value) {
+            setInvalid(true)
+            setErrMsg('Can\'t be blank')
+        } else {
+            if (name !== 'name') {
+                if (e.target.value.match(/[^0-9]/)) {
+                    setInvalid(true)
+                    setErrMsg('Wrong format, numbers only')
+                } else {
+                    setInvalid(false)
+                    if (!doubleInvalid) setErrMsg('')
+                }
+            } else {
+                setInvalid(false)
+                if (!doubleInvalid) setErrMsg('')
+            }
+        }
 
         updateState(e)
     }
 
     const handleDoubleChange = (e) => {
-        setDoubleInvalid(e.target.value === '')
+        if (!e.target.value) {
+            setDoubleInvalid(true)
+            setErrMsg('Can\'t be blank')
+        } else {
+            if (e.target.value.match(/[^0-9]/)) {
+                setDoubleInvalid(true)
+                setErrMsg('Wrong format, numbers only')
+            } else {
+                setDoubleInvalid(false)
+                if (!invalid) setErrMsg('')
+            }
+        }
 
         updateState2(e)
     }
@@ -54,7 +82,7 @@ export default function Input({
             
             {(invalid || doubleInvalid) && (
                 <p>
-                    Can&apos;t be blank
+                    {errMsg}
                 </p>
             )}
         
