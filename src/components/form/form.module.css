@@ -46,11 +46,9 @@
     border-color: transparent;
 }
 
-.form label:focus-within::after,
-.expiration:focus-within::after,
-.form label:has(input[aria-invalid='true'])::after,
-.expiration:has(input[aria-invalid='true'])::after {
-    content: '';
+.form label:after,
+.expiration:after,
+.expiration:before {
     position: absolute;
     top: 24px;
     height: 47px;
@@ -58,34 +56,41 @@
     z-index: -1;
 }
 
-.form label:focus-within::after,
-.expiration:focus-within::after {
+.form label::after,
+.expiration::after,
+.expiration::before {
     background: linear-gradient(to bottom, #6348FE, #610595);
 }
 
 .form label:has(input[aria-invalid='true'])::after,
-.expiration:has(input[aria-invalid='true'])::after {
+.expiration:has(input:last-of-type[aria-invalid='true'])::after,
+.expiration:has(input:first-of-type[aria-invalid='true'])::before {
     background: #FF5050;
 }
 
-.form label:focus-within::after,
-.form label:has(input[aria-invalid='true'])::after {
+.form label::after,
+.form label::before {
     width: calc(100% + 2px);
 }
 
-.form label:focus-within::after,
-.form label:has(input[aria-invalid='true'])::after,
-.expiration:has(input:first-of-type:is(:hover, :focus), input:first-of-type[aria-invalid='true'])::after {
+.form label::after,
+.expiration::before {
     left: -1px;
 }
 
-.expiration:has(input:last-of-type:is(:hover, :focus))::after {
+.expiration::after {
     right: -1px;
 }
 
-.expiration:focus-within::after,
-.expiration:has(input[aria-invalid='true'])::after {
+.expiration::after,
+.expiration::before {
     width: calc(calc(100% / 2) - 2px);
+}
+
+.form label:has(input:is(:hover, :focus), input[aria-invalid='true'])::after,
+.expiration:has(input:first-of-type[aria-invalid='true'], input:first-of-type:is(:hover, :focus))::before,
+.expiration:has(input:last-of-type[aria-invalid='true'], input:last-of-type:is(:hover, :focus))::after {
+    content: '';
 }
 
 .details {
