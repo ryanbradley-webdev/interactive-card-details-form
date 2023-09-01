@@ -6,6 +6,13 @@
     background-size: cover;
 }
 
+@media screen and (min-width: 900px) {
+    .card_container {
+        height: 100%;
+        background-image: url(/bg-main-desktop.png);
+    }
+}
+
 .cards img {
     width: 100%;
 }
@@ -14,9 +21,9 @@
     position: absolute;
     display: grid;
     top: 32px;
-    left: max(16px, calc(50% - 250px));
-    right: max(16px, calc(50% - 250px));
-    max-width: 500px;
+    left: max(16px, calc(50% - 190px));
+    right: max(16px, calc(50% - 190px));
+    max-width: 380px;
 }
 
 .cards > div {
@@ -34,6 +41,37 @@
 
 .cards > div:last-of-type {
     margin-top: -73px;
+}
+
+@media screen and (min-width: 900px) {
+    .cards {
+        gap: 37px;
+        width: auto;
+        left: 164px;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .cards > div {
+        max-width: 447px;
+    }
+
+    .cards img {
+        width: 447px;
+    }
+
+    .cards > div:first-child {
+        grid-row: 2;
+        justify-self: start;
+        margin-left: 94px;
+    }
+
+    .cards > div:last-of-type {
+        justify-self: start;
+        grid-row: 1;
+        margin-top: 0;
+    }
 }
 
 .cards > div:last-of-type::before,

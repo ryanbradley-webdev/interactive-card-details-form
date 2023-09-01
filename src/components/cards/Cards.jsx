@@ -1,6 +1,5 @@
 import CardFront from '../../assets/bg-card-front.png'
 import CardBack from '../../assets/bg-card-back.png'
-import { useMediaQuery } from "usehooks-ts"
 import styles from './cards.module.css'
 import { useEffect, useState } from 'react'
 
@@ -11,8 +10,6 @@ export default function Cards({
     year,
     cvc
 }) {
-    const largeScreen = useMediaQuery('(min-width: 768px)')
-
     const [formattedName, setFormattedName] = useState('Jane Appleseed')
     const [formattedNumber, setFormattedNumber] = useState('0000 0000 0000 0000')
     const [formattedMonth, setFormattedMonth] = useState('00')

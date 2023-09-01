@@ -1,11 +1,13 @@
 #root {
     position: relative;
     display: grid;
+    align-items: center;
     width: 100%;
+    min-height: 100vh;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
     #root {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1.2fr 2fr;
     }
 }
