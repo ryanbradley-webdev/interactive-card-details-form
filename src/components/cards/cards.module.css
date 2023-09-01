@@ -54,7 +54,13 @@
     }
 
     .cards > div {
+        display: flex;
         max-width: 447px;
+        height: fit-content;
+        font-size: 14px;
+        letter-spacing: 2px;
+        border-radius: 15px;
+        box-shadow: 0 10px 32px 8px rgba(0, 0, 0, 0.24);
     }
 
     .cards img {
@@ -103,6 +109,13 @@
     top: 72px;
 }
 
+@media screen and (min-width: 900px) {
+    .cvc {
+        top: 111px;
+        right: 52px;
+    }
+}
+
 .card_details {
     position: absolute;
     inset: 20px;
@@ -114,6 +127,14 @@
     font-weight: 500;
     letter-spacing: 2.2px;
     margin-bottom: 17px;
+}
+
+@media screen and (min-width: 900px) {
+    .card_details h3 {
+        font-size: 28px;
+        letter-spacing: 3.42px;
+        margin-bottom: 26px;
+    }
 }
 
 .card_details div {
