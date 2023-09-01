@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Cards from "./components/cards/Cards"
 import Form from "./components/form/Form"
+import './App.css'
 
 export default function App() {
   const [name, setName] = useState('')
@@ -11,6 +12,7 @@ export default function App() {
 
   return (
     <>
+    
       <Cards
         name={name}
         number={number}
@@ -19,18 +21,22 @@ export default function App() {
         cvc={cvc}
       />
 
-      <Form
-        name={name}
-        setName={setName}
-        number={number}
-        setNumber={setNumber}
-        month={month}
-        setMonth={setMonth}
-        year={year}
-        setYear={setYear}
-        cvc={cvc}
-        setCvc={setCvc}
-      />
+      <section>
+
+        <Form
+          name={name}
+          setName={setName}
+          number={number}
+          setNumber={setNumber}
+          month={month}
+          setMonth={setMonth}
+          year={year}
+          setYear={setYear}
+          cvc={cvc}
+          setCvc={setCvc}
+        />
+
+      </section>
     </>
   )
 }

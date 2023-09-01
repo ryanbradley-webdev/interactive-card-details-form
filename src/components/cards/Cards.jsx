@@ -1,5 +1,3 @@
-import backgroundLarge from '../../assets/bg-main-desktop.png'
-import backgroundSmall from '../../assets/bg-main-mobile.png'
 import CardFront from '../../assets/bg-card-front.png'
 import CardBack from '../../assets/bg-card-back.png'
 import { useMediaQuery } from "usehooks-ts"
@@ -13,7 +11,7 @@ export default function Cards({
     year,
     cvc
 }) {
-    const largeScreen = useMediaQuery('(min-width: 480px)')
+    const largeScreen = useMediaQuery('(min-width: 768px)')
 
     const [formattedName, setFormattedName] = useState('Jane Appleseed')
     const [formattedNumber, setFormattedNumber] = useState('0000 0000 0000 0000')
@@ -49,7 +47,6 @@ export default function Cards({
         <div
             className={styles.card_container}
         >
-            <img src={largeScreen ? backgroundLarge : backgroundSmall} alt="" />
 
             <div
                 className={styles.cards}
