@@ -1,0 +1,24 @@
+.h1,
+.h2 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.h1 {
+    font-size: 28px;
+    letter-spacing: 3.42px;
+    color: #21092F;
+    margin-bottom: 16px;
+}
+
+.h2 {
+    font-size: 18px;
+    color: #8F8694;
+    margin-bottom: 28px;
+}
+
+.img {
+    display: block;
+    margin-inline: auto;
+    margin-bottom: 15px;
+}

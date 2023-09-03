@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import Button from '../button/Button';
 import Input from '../input/Input';
 import styles from './form.module.css'
+import Success from '../success/Success';
 
 export default function Form({
     name,
@@ -14,6 +16,9 @@ export default function Form({
     cvc,
     setCvc
 }) {
+    const [loading, setLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
+
     const updateNumber = e => {
         const number = e.target.value
 
@@ -46,95 +51,124 @@ export default function Form({
         }
     }
 
+    const resetForm = () => {
+        setName('')
+        setNumber('')
+        setMonth('')
+        setYear('')
+        setCvc('')
+        setSuccess(false)
+    }
+
     function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
+
+        setLoading(true)
+
+        setTimeout(() => {
+            setLoading(false)
+            setSuccess(true)
+        }, 1500)
     }
 
     return (
         <form
             onSubmit={handleSubmit}
             className={styles.form}
+            data-loading={loading}
         >
 
-            <label htmlFor="name">
-
-                <span>
-                    CARDHOLDER NAME
-                </span>
-
-                <Input
-                    state={name}
-                    updateState={e => setName(e.target.value)}
-                    name='name'
-                    placeholder='e.g. Jane Appleseed'
-                />
-
-            </label>
-
-            <label htmlFor="number">
-
-                <span>
-                    CARD NUMBER
-                </span>
-
-                <Input
-                    state={number}
-                    updateState={updateNumber}
-                    name='number'
-                    placeholder='e.g. 1234 5678 9123 0000'
-                />
-
-            </label>
-
-            <div
-                className={styles.details}
-            >
-
-                <div
-                    className={styles.expiration}
-                >
-
-                    <label>
-
-                        <span>
-                            EXP. DATE (MM/YY)
-                        </span>
-
-                    </label>
-
-                    <Input
-                        state={month}
-                        state2={year}
-                        updateState={updateMonth}
-                        updateState2={updateYear}
-                        name='month'
-                        name2='year'
-                        placeholder='MM'
-                        placeholder2='YY'
+            {
+                success ? (
+                    <Success
+                        onClick={resetForm}
                     />
+                ) : (
+                    <>
+                    
+                        <label htmlFor="name">
 
-                </div>
+                            <span>
+                                CARDHOLDER NAME
+                            </span>
 
-                <label htmlFor="cvc">
+                            <Input
+                                state={name}
+                                updateState={e => setName(e.target.value)}
+                                name='name'
+                                placeholder='e.g. Jane Appleseed'
+                            />
 
-                    <span>
-                        CVC
-                    </span>
+                        </label>
 
-                    <Input
-                        state={cvc}
-                        updateState={updateCvc}
-                        name='cvc'
-                        placeholder='e.g. 123'
-                    />
+                        <label htmlFor="number">
 
-                </label>
+                            <span>
+                                CARD NUMBER
+                            </span>
 
-            </div>
+                            <Input
+                                state={number}
+                                updateState={updateNumber}
+                                name='number'
+                                placeholder='e.g. 1234 5678 9123 0000'
+                            />
 
-            <Button>
-                Confirm
-            </Button>
+                        </label>
+
+                        <div
+                        className={styles.details}
+                        >
+
+                            <div
+                                className={styles.expiration}
+                            >
+
+                                <label>
+
+                                    <span>
+                                        EXP. DATE (MM/YY)
+                                    </span>
+
+                                </label>
+
+                                <Input
+                                    state={month}
+                                    state2={year}
+                                    updateState={updateMonth}
+                                    updateState2={updateYear}
+                                    name='month'
+                                    name2='year'
+                                    placeholder='MM'
+                                    placeholder2='YY'
+                                />
+
+                            </div>
+
+                            <label htmlFor="cvc">
+
+                                <span>
+                                    CVC
+                                </span>
+
+                                <Input
+                                    state={cvc}
+                                    updateState={updateCvc}
+                                    name='cvc'
+                                    placeholder='e.g. 123'
+                                />
+
+                            </label>
+
+                        </div>
+
+                        <Button>
+                            Confirm
+                        </Button>
+                    
+                    </>
+                )
+            }
 
         </form>
     )
