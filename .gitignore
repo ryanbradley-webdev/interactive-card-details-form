@@ -29,7 +29,6 @@ dist
 dist-ssr
 *.local
 design
-documentation
 
 # Editor directories and files
 .vscode/*
