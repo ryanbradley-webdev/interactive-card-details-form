@@ -13,6 +13,14 @@ html {
   position: relative;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: progress;
+}
+
 .visually-hidden {
   display: none;
 }

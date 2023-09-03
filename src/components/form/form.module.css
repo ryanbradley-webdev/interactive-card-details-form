@@ -13,6 +13,10 @@
     margin-inline: auto;
 }
 
+.form[data-loading='true'] {
+    opacity: 0.5;
+}
+
 .form label,
 .expiration {
     position: relative;
